@@ -1,5 +1,8 @@
 package com.tolany.java.Java_project.controller;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tolany.java.Java_project.dto.BrandDTO;
@@ -45,5 +49,25 @@ public class BrandController {
     	 Brand brand = BrandMapper.INSTANCE.toBrand(brandDTO);
     	 brand=brandService.update(updateId, brand);
     	 return ResponseEntity.ok(BrandMapper.INSTANCE.toDTO(brand));
+     }
+ 	
+ 	  @GetMapping
+      public ResponseEntity<?> getBrands(){
+ 		 List<BrandDTO>  list=brandService.getBrands()
+ 		    .stream()
+ 		    .map(brand -> BrandMapper.INSTANCE.toDTO(brand))
+ 		    .collect(Collectors.toList());
+     	 return ResponseEntity.ok(list);
+     	 
+      }
+ 	  
+ 	 @GetMapping("filter")
+     public ResponseEntity<?> getBrands(@RequestParam("name") String name){
+		 List<BrandDTO>  list=brandService.findByName(name)
+		    .stream()
+		    .map(brand -> BrandMapper.INSTANCE.toDTO(brand))
+		    .collect(Collectors.toList());
+    	 return ResponseEntity.ok(list);
+    	 
      }
 }
