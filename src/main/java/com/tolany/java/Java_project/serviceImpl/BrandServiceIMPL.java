@@ -33,10 +33,20 @@ public class BrandServiceIMPL implements BrandService{
 		byId.setName(brandUpdate.getName());
 		return brandRepository.save(byId);
 	}
+	
+	
 	@Override
 	public List<Brand> getBrands() {
 		
 		return brandRepository.findAll();
+	}
+	
+	
+	@Override
+	public List<Brand> findByName(String name) {
+	
+		//return brandRepository.findByNameLike("%"+name+"%");
+		return brandRepository.findByNameContaining(name);
 	}
 	
 		
