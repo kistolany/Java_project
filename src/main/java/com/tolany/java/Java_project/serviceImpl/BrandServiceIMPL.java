@@ -1,5 +1,6 @@
 package com.tolany.java.Java_project.serviceImpl;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,11 @@ public class BrandServiceIMPL implements BrandService{
 		Brand byId = getById(id);
 		byId.setName(brandUpdate.getName());
 		return brandRepository.save(byId);
+	}
+	@Override
+	public List<Brand> getBrands() {
+		
+		return brandRepository.findAll();
 	}
 	
 		

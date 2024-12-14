@@ -12,4 +12,5 @@ public interface BrandMapper {
 	BrandMapper INSTANCE =Mappers.getMapper(BrandMapper.class);
 	Brand toBrand(BrandDTO brandDTO);
 	BrandDTO toDTO(Brand brand);
+	
 }

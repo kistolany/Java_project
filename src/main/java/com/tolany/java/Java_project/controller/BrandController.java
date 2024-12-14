@@ -46,4 +46,10 @@ public class BrandController {
     	 brand=brandService.update(updateId, brand);
     	 return ResponseEntity.ok(BrandMapper.INSTANCE.toDTO(brand));
      }
+ 	
+ 	  @GetMapping
+      public ResponseEntity<?> getBrands(){
+     	 return ResponseEntity.ok(brandService.getBrands());
+     	  //return ResponseEntity.ok(BrandMapper.INSTANCE.toDTO(brand));
+      }
 }
