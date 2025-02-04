@@ -1,0 +1,40 @@
+databaseChangeLog:
+  - changeSet:
+      id: 002_init_db_products_structure
+      author: kistolanysokot@gmail.com
+      changes:
+        - createTable:
+            tableName: products
+            columns:
+              - column:
+                  name: product_id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: product_name
+                  type: VARCHAR(50)
+              - column:
+                  name: available_unit
+                  type: BIGINT
+              - column:
+                  name: image_path
+                  type: VARCHAR(50)
+              - column:
+                  name: sale_price
+                  type: DECIMAL 
+              - column:
+                  name: color_id
+                  type: BIGINT
+                  constraints:
+                    foreignKey:
+                      constraintName: fk_colors_product
+                      references: colors(color_id)
+              - column:
+                  name: model_id
+                  type: BIGINT
+                  constraints:
+                    foreignKey:
+                      constraintName: fk_models_product
+                      references: models(id)

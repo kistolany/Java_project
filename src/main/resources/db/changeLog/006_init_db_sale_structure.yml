@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 006_init_db_sale_structure
+      author: kistolanysokot@gmail.com
+      changes:
+        - createTable:
+            tableName: sale
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: sold_date
+                  type: TIMESTAMP

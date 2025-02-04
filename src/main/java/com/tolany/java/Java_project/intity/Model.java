@@ -1,5 +1,4 @@
 package com.tolany.java.Java_project.intity;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +15,7 @@ import lombok.Data;
 public class Model {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String name;
     
     @ManyToOne

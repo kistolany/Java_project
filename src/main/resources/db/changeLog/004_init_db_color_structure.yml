@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - changeSet:
+      id: 004_init_db_color_structure
+      author: kistolanysokot@gmail.com
+      changes:
+        - createTable:
+            tableName: colors
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(50)

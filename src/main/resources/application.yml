@@ -9,4 +9,10 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
     hibernate:
       ddl-auto: update
-      
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  liquibase:
+    enabled: true
+    change-log: classpath:db/changeLog/db.changeLog-master.yaml
+    default-schema: public

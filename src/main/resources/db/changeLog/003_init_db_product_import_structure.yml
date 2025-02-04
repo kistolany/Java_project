@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: 003_init_db_product_import_structure
+      author: kistolanysokot@gmail.com
+      changes:
+        - createTable:
+            tableName: product_import
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: import_date
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: import_unit
+                  type: BIGINT
+              - column:
+                  name: price_per_unit
+                  type: DECIMAL
+              - column:
+                  name: product_id
+                  type: BIGINT
+                  constraints:
+                    foreignKey:
+                      constraintName: fk_product_productImport
+                      references: products(product_id)
+                      deferrable: false
+                      nullable: false
